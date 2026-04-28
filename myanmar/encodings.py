@@ -29,37 +29,12 @@ import itertools
 
 def build_pattern(pattern, data):
     # build regular expression from a pattern
-    if isinstance(pattern, str):
-        node = pattern[:pattern.find('_')] if '_' in pattern else pattern
-        or_expr = "|".join(
-            [
-                re.escape(x) for x in
-                sorted(set(data[node].values()), key=len, reverse=True) if x
-            ]
-        )
-        return '(?P<{}>{})'.format(pattern, or_expr)
-
-    if isinstance(pattern, tuple):
-        lst = [build_pattern(x, data) for x in pattern]
-        if len(lst) > 1:
-            or_expr = "|".join(lst)
-            return '(%s){0,%d}' % (or_expr, len(lst))
-        else:
-            return '({})?'.format(lst[0])
-
-    if isinstance(pattern, list):
-        return ''.join([build_pattern(x, data) for x in pattern])
+    pass
 
 
 def build_table(data, reverse=False):
     # build conversion table from json mapping data.
-    ret = {}
-    for key, value in data.items():
-        if reverse:
-            ret.update({v: k for k, v in value.items() if v})
-        else:
-            ret.update({k: v for k, v in value.items() if v})
-    return ret
+    pass
 
 
 class BaseEncoding():

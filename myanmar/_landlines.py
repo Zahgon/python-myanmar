@@ -2,7 +2,7 @@ import re
 
 
 def get_landline_patterns(numberings):
-    return re.compile("^(\\+?95)?{0}$".format(numberings[0])), numberings[1]
+    pass
 
 
 _patterns = list(

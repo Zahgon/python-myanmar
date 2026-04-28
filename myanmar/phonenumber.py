@@ -84,8 +84,7 @@ def is_valid_phonenumber(phonenumber):
     >>> is_valid_phonenumber(94200281870)
     False
     """
-    phonenumber = str(phonenumber).strip()
-    return mm_phone_re.match(phonenumber) is not None
+    pass
 
 
 def normalize_phonenumber(phonenumber):
@@ -99,15 +98,7 @@ def normalize_phonenumber(phonenumber):
     >>> normalize_phonenumber('420028187')
     959420028187
     """
-    phonenumber = str(phonenumber).strip()
-    match = mm_phone_re.match(phonenumber)
-    if not match:
-        raise RuntimeError("%s is not a valid Myanmar phonenumber." %
-                           phonenumber)
-
-    phonenumber = match.groups()[3]
-    phonenumber = '959' + phonenumber
-    return int(phonenumber)
+    pass
 
 
 def get_phone_operator(phonenumber):
@@ -121,17 +112,7 @@ def get_phone_operator(phonenumber):
     >>> get_phone_operator('123456789')
     <Operator.Unknown: 'Unknown'>
     """
-    phonenumber = str(phonenumber).strip()
-
-    if mpt_re.match(phonenumber):
-        return (Operator.Mpt)
-    if ooredoo_re.match(phonenumber):
-        return (Operator.Ooredoo)
-    if telenor_re.match(phonenumber):
-        return (Operator.Telenor)
-    if mytel_re.match(phonenumber):
-        return (Operator.Mytel)
-    return (Operator.Unknown)
+    pass
 
 
 def get_landline_operator(phonenumber):
@@ -145,10 +126,4 @@ def get_landline_operator(phonenumber):
     >>> get_landline_operator('14681234')
     'VoIPMyanmarGroup'
     """
-    phonenumber = str(phonenumber).strip()
-
-    for pattern, operator in _landlines._patterns:
-        if pattern.match(phonenumber):
-            return operator
-
-    return "Unknown"
+    pass

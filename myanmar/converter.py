@@ -48,12 +48,12 @@ def convert(text, fromenc, toenc):
     """
     Convert text in ``fromenc`` encoding to ``toenc`` encoding.
 
-    >>> convert('အကျိုးတရား', 'unicode', 'zawgyi')
-    'အက်ိဳးတရား'
-    >>> convert('ဉာဏ္ႀကီးရွင္', 'zawgyi', 'unicode')
-    'ဉာဏ်ကြီးရှင်'
+    >>> convert('á€¡á€€á€»á€­á€¯á€¸á€�á€›á€¬á€¸', 'unicode', 'zawgyi')
+    'á€¡á€€á€ºá€­á€³á€¸á€�á€›á€¬á€¸'
+    >>> convert('á€‰á€¬á€�á€¹á‚€á€€á€®á€¸á€›á€½á€„á€¹', 'zawgyi', 'unicode')
+    'á€‰á€¬á€�á€ºá€€á€¼á€®á€¸á€›á€¾á€„á€º'
     >>> convert('&[ef;', 'wininnwa', 'unicode')
-    'ရဟန်း'
+    'á€›á€Ÿá€”á€ºá€¸'
     """
     if fromenc not in encoders:
         raise NotImplementedError("Unsupported encoding: %s" % fromenc)
@@ -145,12 +145,7 @@ def is_wide_consonant(char):
 
 
 def is_lower_consonant(char):
-    LOWER_CONSONANTS = [
-        "nya",
-        "na",
-        "ra",  # ... more
-    ]
-    return char in LOWER_CONSONANTS
+    pass
 
 
 def has_lower_marks(syllable, filters=[]):

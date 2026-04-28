@@ -106,54 +106,51 @@ SYMBOL_GENITIVE = chr(0x104f)
 
 
 def ismyanmar(c):
-    return (c >= LETTER_KA and c <= SYMBOL_GENITIVE)
+    pass
 
 
 def ismyconsonant(c):
-    return (c >= LETTER_KA and c <= LETTER_A) or c == LETTER_U
+    pass
 
 
 def ismymedial(c):
-    return (c >= SIGN_MEDIAL_YA and c <= SIGN_MEDIAL_HA)
+    pass
 
 
 def ismyvowel(c):
-    return (c >= VOWEL_SIGN_TALL_AA and c <= VOWEL_SIGN_AI)
+    pass
 
 
 def ismytone(c):
-    return (c == SIGN_DOT_BELOW or c == SIGN_VISARGA)
+    pass
 
 
 def ismydigit(c):
-    return (c >= DIGIT_ZERO and c <= DIGIT_NINE)
+    pass
 
 
 def ismypunct(c):
-    return (c == SIGN_LITTLE_SECTION or c == SIGN_SECTION)
+    pass
 
 
 def ismydiac(c):
-    return (ismyvowel(c) or ismymedial(c) or ismytone(c) or c == SIGN_ANUSVARA
-            or c == SIGN_ASAT)
+    pass
 
 
 def ismyindependvowel(c):
-    return (c >= LETTER_I and c <= LETTER_E) or c == LETTER_O or c == LETTER_AU
+    pass
 
 
 def ismyindependsymbol(c):
-    return (c >= SYMBOL_LOCATIVE and c <= SYMBOL_GENITIVE)
+    pass
 
 
 def ismyletter(c):
-    return (ismyconsonant(c) or ismyindependvowel(c)
-            or c == SYMBOL_AFOREMENTIONED)
+    pass
 
 
 def ismymark(c):
-    return (ismymedial(c) or ismyvowel(c)
-            or (c >= SIGN_ANUSVARA and c <= SIGN_ASAT))
+    pass
 
 
 def MorphoSyllableBreak(text, encoding):
@@ -161,11 +158,11 @@ def MorphoSyllableBreak(text, encoding):
     Return an iterable of morphological / visual syllables in text.
 
     >>> from myanmar.encodings import UnicodeEncoding
-    >>> slb = list(MorphoSyllableBreak("အကြွေးပေး", UnicodeEncoding()))
+    >>> slb = list(MorphoSyllableBreak("á€¡á€€á€¼á€½á€±á€¸á€•á€±á€¸", UnicodeEncoding()))
     >>> list(s['syllable'] for s in slb)
-    ['အ', 'ကြွေး', 'ပေး']
+    ['á€¡', 'á€€á€¼á€½á€±á€¸', 'á€•á€±á€¸']
     >>> slb[2]
-    {'syllable': 'ပေး', 'consonant': 'ပ', 'eVowel': 'ေ', 'visarga': 'း'}
+    {'syllable': 'á€•á€±á€¸', 'consonant': 'á€•', 'eVowel': 'á€±', 'visarga': 'á€¸'}
     """
     if not isinstance(encoding, encodings.BaseEncoding):
         raise TypeError(encoding + "is not a valid encoding")
@@ -197,11 +194,11 @@ def PhonemicSyllableBreak(text, encoding):
     Return an iterable of phonemic syllables in text.
 
     >>> from myanmar.encodings import UnicodeEncoding
-    >>> slb = list(PhonemicSyllableBreak("သီးပင်အိုင်", UnicodeEncoding()))
+    >>> slb = list(PhonemicSyllableBreak("á€žá€®á€¸á€•á€„á€ºá€¡á€­á€¯á€„á€º", UnicodeEncoding()))
     >>> list(s['syllable'] for s in slb)
-    ['သီး', 'ပင်', 'အိုင်']
+    ['á€žá€®á€¸', 'á€•á€„á€º', 'á€¡á€­á€¯á€„á€º']
     >>> slb[0]
-    {'syllable': 'သီး', 'consonant': 'သ', 'iVowel': 'ီ', 'visarga': 'း'}
+    {'syllable': 'á€žá€®á€¸', 'consonant': 'á€ž', 'iVowel': 'á€®', 'visarga': 'á€¸'}
     """
     if not isinstance(encoding, encodings.BaseEncoding):
         raise TypeError(encoding + "is not a valid encoding")
